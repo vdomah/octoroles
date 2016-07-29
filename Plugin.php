@@ -68,8 +68,8 @@ class Plugin extends PluginBase
     {
         return [
             'functions'   => [
-                'can'         => function($can) { return RoleModel::can($can); },
-                'hasRole'     => function($role, $user = null) { return RoleModel::hasRole($role, $user); }
+                'able'         => function($permission, $user = null) { return RoleModel::can($permission, $user); },
+                'isRole'     => function($role, $user = null) { return RoleModel::hasRole($role, $user); }
             ]
         ];
     }

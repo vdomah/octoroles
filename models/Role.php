@@ -75,7 +75,7 @@ class Role extends Model
             $user = Auth::getUser();
         }
 
-        return $user->role->gotPermission($perm);
+        return $user ? $user->role->gotPermission($perm) : false;
     }
 
     public static function hasRole($code, $user = null)
@@ -132,7 +132,6 @@ class Role extends Model
     public function getAncestorsAttribute()
     {
         $ancestors = [];
-        //$ancestors[] = $this;
 
         $current = $this->parent;
         while ($current != null) {
