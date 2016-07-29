@@ -1,0 +1,6 @@
+plugin:
+    name: 'vdomah.roles::lang.plugin.name'
+    description: 'vdomah.roles::lang.plugin.description'
+    author: 'Art Gek'
+    icon: oc-icon-cubes
+    homepage: ''

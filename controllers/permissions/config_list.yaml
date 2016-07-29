@@ -1,0 +1,11 @@
+list: $/vdomah/roles/models/permission/columns.yaml
+modelClass: Vdomah\Roles\Models\Permission
+title: Permissions
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'vdomah/roles/permissions/update/:id'

@@ -1,0 +1,11 @@
+columns:
+    name:
+        label: 'vdomah.roles::lang.fields.name'
+        type: text
+        searchable: true
+        sortable: true
+    code:
+        label: 'vdomah.roles::lang.fields.code'
+        type: text
+        searchable: true
+        sortable: true

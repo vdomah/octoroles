@@ -1,0 +1,14 @@
+fields:
+    name:
+        label: 'vdomah.roles::lang.fields.name'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    code:
+        label: 'vdomah.roles::lang.fields.code'
+        span: auto
+        oc.commentPosition: ''
+        type: text
+    role:
+        label: Roles
+        type: relation
