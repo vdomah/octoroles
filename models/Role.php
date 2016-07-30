@@ -67,7 +67,7 @@ class Role extends Model
         return $this->parent ? $this->parent->name : '';
     }
 
-    public static function can($perm_code, $user = null)
+    public static function able($perm_code, $user = null)
     {
         $perm = PermissionModel::where('code', $perm_code)->first();
 
@@ -75,10 +75,10 @@ class Role extends Model
             $user = Auth::getUser();
         }
 
-        return $user ? $user->role->gotPermission($perm) : false;
+        return $user && $perm ? $user->role->gotPermission($perm) : false;
     }
 
-    public static function hasRole($code, $user = null)
+    public static function isRole($code, $user = null)
     {
         $out = false;
 

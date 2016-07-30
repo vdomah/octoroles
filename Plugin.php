@@ -9,12 +9,27 @@ use Vdomah\Roles\Models\Role as RoleModel;
 
 class Plugin extends PluginBase
 {
+    /**
+     * @var array   Require the RainLab.User plugin
+     */
+    public $require = ['RainLab.User'];
+
     public function registerComponents()
     {
     }
 
     public function registerSettings()
     {
+    }
+
+    public function registerMarkupTags()
+    {
+        return [
+            'functions'   => [
+                'able'         => function($permission, $user = null) { return RoleModel::able($permission, $user); },
+                'isRole'     => function($role, $user = null) { return RoleModel::isRole($role, $user); }
+            ]
+        ];
     }
 
     public function boot()
@@ -62,15 +77,23 @@ class Plugin extends PluginBase
                 ],
             ]);
         });
-    }
 
-    public function registerMarkupTags()
-    {
-        return [
-            'functions'   => [
-                'able'         => function($permission, $user = null) { return RoleModel::can($permission, $user); },
-                'isRole'     => function($role, $user = null) { return RoleModel::hasRole($role, $user); }
-            ]
-        ];
+        Event::listen('backend.list.extendColumns', function($widget) {
+
+            if (!$widget->getController() instanceof \RainLab\User\Controllers\Users) {
+                return;
+            }
+
+            if (!$widget->model instanceof \RainLab\User\Models\User) {
+                return;
+            }
+
+            $widget->addColumns([
+                'role' => [
+                    'select' => 'name',
+                    'relation' => 'role',
+                ]
+            ]);
+        });
     }
 }

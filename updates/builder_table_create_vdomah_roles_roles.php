@@ -12,7 +12,7 @@ class BuilderTableCreateVdomahRolesRoles extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 255);
-            $table->integer('parent_id')->unsigned();
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->string('code', 255);
         });
     }

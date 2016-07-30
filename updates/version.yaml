@@ -2,4 +2,4 @@
     - 'Initialize plugin.'
     - builder_table_create_vdomah_roles_roles.php
     - builder_table_create_vdomah_roles_permissions.php
-    - migration104.php
+    - users_add_role_id_column.php
