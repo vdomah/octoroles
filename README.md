@@ -1,6 +1,3 @@
-# Hierarchic Roles OctoberCMS plugin
-This plugin allows to manage access rights based on roles hierarchy.
-
 ## Requirements
 - [RainLab.User](http://octobercms.com/plugin/rainlab-user) plugin
 
@@ -11,10 +8,14 @@ Then create some permissions. After that you will be able to set rights for the 
 
 #Frontend
 
-You can use twig helpers to allow or restrict access.
+You can use twig helpers or PHP static functions to allow or restrict access.
 
-###isRole(role_code)
+### Check if user got specific role
+    isRole(role_code)
+    Role::isRole(role_code)
 Checks if current user has specific role or a role with higher privileges (roles ancestors). For example if user is admin isRole('admin') and isRole('superadmin') will return true.
 
-###able(permission_code)
+###Check if user got specific permission
+    able(permission_code)
+    Role::able(permission_code)
 Checks if current user's role has right to execute a permission. Permission should be assigned to the user's role or to a role with lower privileges (roles successors).

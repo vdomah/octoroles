@@ -9,4 +9,7 @@
         'code' => 'Código',
         'role' => 'Role',
     ],
+    'role' => [
+        'label' => 'Role',
+    ],
 ];

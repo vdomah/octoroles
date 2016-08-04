@@ -58,6 +58,12 @@ class Plugin extends PluginBase
         UserModel::extend(function($model)
         {
             $model->belongsTo['role']      = ['Vdomah\Roles\Models\Role'];
+
+            $model->addDynamicMethod('scopeFilterByRole', function($query, $filter) use ($model) {
+                return $query->whereHas('role', function($group) use ($filter) {
+                    $group->whereIn('id', $filter);
+                });
+            });
         });
 
         UsersController::extendFormFields(function($form, $model, $context){
