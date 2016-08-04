@@ -10,5 +10,5 @@ fields:
         oc.commentPosition: ''
         type: text
     role:
-        label: Roles
+        label: 'vdomah.roles::lang.fields.role'
         type: relation

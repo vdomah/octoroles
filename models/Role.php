@@ -64,7 +64,7 @@ class Role extends Model
 
     public function getParentNameAttribute()
     {
-        return $this->parent ? $this->parent->title : '';
+        return $this->parent ? $this->parent->name : '';
     }
 
     public static function able($perm_code, $user = null)
