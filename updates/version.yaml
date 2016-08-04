@@ -3,5 +3,5 @@
     - builder_table_create_vdomah_roles_roles.php
     - builder_table_create_vdomah_roles_permissions.php
     - users_add_role_id_column.php
-1.0.1
-    - 'Premission name transaltable. Readme update. Move static methods to Helper'
+1.0.1:
+    - 'Permission name transaltable. Readme update. Move static methods to Helper'
