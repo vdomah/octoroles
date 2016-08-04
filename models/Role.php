@@ -4,6 +4,7 @@ use Model;
 use Auth;
 use RainLab\Builder\Classes\PermissionsModel;
 use Vdomah\Roles\Models\Permission as PermissionModel;
+use Vdomah\Roles\Classes\Helper;
 
 /**
  * Model
@@ -67,38 +68,6 @@ class Role extends Model
         return $this->parent ? $this->parent->name : '';
     }
 
-    public static function able($perm_code, $user = null)
-    {
-        $perm = PermissionModel::where('code', $perm_code)->first();
-
-        if (Auth::check() && $user == null) {
-            $user = Auth::getUser();
-        }
-
-        return $user && $perm ? $user->role->gotPermission($perm) : false;
-    }
-
-    public static function isRole($code, $user = null)
-    {
-        $out = false;
-
-        //$role_ids = [];
-        $first = self::where('code', $code)->first();
-
-        $role_ids = $first->ancestors->lists('id');
-        $role_ids[] = $first->id;
-
-        if (Auth::check() && $user == null) {
-            $user = Auth::getUser();
-        }
-
-        if (in_array($user->role_id, $role_ids)) {
-            $out = true;
-        }
-
-        return $out;
-    }
-
     public function gotPermission($perm)
     {
         $out = false;
@@ -107,22 +76,7 @@ class Role extends Model
             $out = true;
         } else {
             if ($this->children != null) {
-                $out = self::iterateChildren($this->children, $perm);
-            }
-        }
-
-        return $out;
-    }
-
-    public static function iterateChildren($children, $perm)
-    {
-        $out = false;
-
-        foreach ($children as $child) {
-            if ($child->id == $perm->role_id) {
-                $out = true;
-            } elseif ($child->children != null) {
-                $out = self::iterateChildren($child->children, $perm);
+                $out = Helper::iterateChildren($this->children, $perm);
             }
         }
 

@@ -5,7 +5,7 @@ use Backend;
 use System\Classes\PluginBase;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Controllers\Users as UsersController;
-use Vdomah\Roles\Models\Role as RoleModel;
+use Vdomah\Roles\Classes\Helper;
 
 class Plugin extends PluginBase
 {
@@ -26,8 +26,8 @@ class Plugin extends PluginBase
     {
         return [
             'functions'   => [
-                'able'         => function($permission, $user = null) { return RoleModel::able($permission, $user); },
-                'isRole'     => function($role, $user = null) { return RoleModel::isRole($role, $user); }
+                'able'         => function($permission, $user = null) { return Helper::able($permission, $user); },
+                'isRole'     => function($role, $user = null) { return Helper::isRole($role, $user); }
             ]
         ];
     }
@@ -79,7 +79,7 @@ class Plugin extends PluginBase
                     'label'     => 'vdomah.roles::lang.fields.role',
                     'tab'       => 'rainlab.user::lang.user.account',
                     'type'      => 'dropdown',
-                    'options'   => array_merge([0 => '- Not chosen -'], RoleModel::lists('name', 'id')),
+                    'options'   => array_merge([0 => '- Not chosen -'], Helper::lists('name', 'id')),
                 ],
             ]);
         });
