@@ -6,6 +6,7 @@ use System\Classes\PluginBase;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Controllers\Users as UsersController;
 use Vdomah\Roles\Classes\Helper;
+use Vdomah\Roles\Models\Role as RoleModel;
 
 class Plugin extends PluginBase
 {
@@ -78,8 +79,7 @@ class Plugin extends PluginBase
                 'role' => [
                     'label'     => 'vdomah.roles::lang.fields.role',
                     'tab'       => 'rainlab.user::lang.user.account',
-                    'type'      => 'dropdown',
-                    'options'   => array_merge([0 => '- Not chosen -'], Helper::lists('name', 'id')),
+                    'type'      => 'relation',
                 ],
             ]);
         });

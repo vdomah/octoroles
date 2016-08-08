@@ -12,6 +12,7 @@ use Vdomah\Roles\Classes\Helper;
 class Role extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\SimpleTree;
 
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];
 
@@ -33,13 +34,6 @@ class Role extends Model
      * @var string The database table used by the model.
      */
     public $table = 'vdomah_roles_roles';
-
-    public $belongsTo = [
-        'parent' => [
-            'Vdomah\Roles\Models\Role',
-            'key' => 'parent_id',
-        ],
-    ];
 
     public $hasMany = [
         'children' => [
