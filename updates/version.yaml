@@ -7,3 +7,5 @@
     - 'Permission name transaltable. Readme update. Move static methods to Helper'
 1.0.2:
     - 'Soft implementation of RainLab.Translate'
+1.0.3:
+    - 'SimpleTree trait implemented, fixed roles dropdown in user form'
