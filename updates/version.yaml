@@ -9,3 +9,5 @@
     - 'Soft implementation of RainLab.Translate'
 1.0.3:
     - 'SimpleTree trait implemented, fixed roles dropdown in user form'
+1.0.4:
+    - 'Replaced hardcoded backend urls with dynamic links in view (thanks to Damian Verhaar)'

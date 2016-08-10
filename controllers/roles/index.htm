@@ -13,9 +13,9 @@
                     <label for="checkboxAll"></label>
                 </div>
             </th>
-            <th class=""><a href="/admin/vdomah/roles/permissions">Permissions</a></th>
+            <th class=""><a href="<?= Backend::url('vdomah/roles/permissions') ?>">Permissions</a></th>
             <?php foreach($this->roles as $role): ?>
-            <th class=""><a href="/admin/vdomah/roles/roles/update/<?=$role->id?>"><?=$role->name?></a></th>
+            <th class=""><a href="<?= Backend::url('vdomah/roles/roles/update', ['id' => $role->id]) ?>"><?=$role->name?></a></th>
             <?php endforeach; ?>
         </tr>
         </thead>
@@ -28,7 +28,6 @@
                     <label for="checkbox_1">Check</label>
                 </div>
             </td>
-            <!--<td><a href="/admin/vdomah/roles/permissions/update/<?=$permission->id?>"><?=$permission->name?></a></td>-->
             <td><?=$permission->name?></td>
             <?php foreach($this->roles as $role): ?>
             <td><button
