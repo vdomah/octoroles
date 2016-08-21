@@ -11,3 +11,5 @@
     - 'SimpleTree trait implemented, fixed roles dropdown in user form'
 1.0.4:
     - 'Replaced hardcoded backend urls with dynamic links in view (thanks to Damian Verhaar)'
+1.0.4:
+    - 'Replaced hardcoded backend urls with dynamic links in controller (thanks to Damian Verhaar)'
