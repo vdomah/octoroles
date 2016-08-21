@@ -1,0 +1,13 @@
+1.0.0:
+    - 'Initialize plugin.'
+    - builder_table_create_vdomah_roles_roles.php
+    - builder_table_create_vdomah_roles_permissions.php
+    - users_add_role_id_column.php
+1.0.1:
+    - 'Permission name transaltable. Readme update. Move static methods to Helper'
+1.0.2:
+    - 'Soft implementation of RainLab.Translate'
+1.0.3:
+    - 'SimpleTree trait implemented, fixed roles dropdown in user form'
+1.0.4:
+    - 'Replaced hardcoded backend urls with dynamic links in view (thanks to Damian Verhaar)'

@@ -1,0 +1,10 @@
+name: Roles
+form: $/vdomah/roles/models/role/fields.yaml
+modelClass: Vdomah\Roles\Models\Role
+defaultRedirect: vdomah/roles/roles
+create:
+    redirect: 'vdomah/roles/roles/update/:id'
+    redirectClose: vdomah/roles/roles
+update:
+    redirect: vdomah/roles/roles
+    redirectClose: vdomah/roles/roles

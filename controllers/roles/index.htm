@@ -1,0 +1,49 @@
+<div style="margin: 0 20px 10px;"><div data-control="toolbar">
+    <a href="<?= Backend::url('vdomah/roles/roles/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?> <?= e(trans('vdomah.roles::lang.fields.role')) ?></a>
+</div>
+</div>
+
+<div class="control-list list-unresponsive">
+    <table class="table data">
+        <thead>
+        <tr>
+            <th class="list-checkbox">
+                <div class="checkbox custom-checkbox nolabel">
+                    <input type="checkbox" id="checkboxAll" />
+                    <label for="checkboxAll"></label>
+                </div>
+            </th>
+            <th class=""><a href="<?= Backend::url('vdomah/roles/permissions') ?>">Permissions</a></th>
+            <?php foreach($this->roles as $role): ?>
+            <th class=""><a href="<?= Backend::url('vdomah/roles/roles/update', ['id' => $role->id]) ?>"><?=$role->name?></a></th>
+            <?php endforeach; ?>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($this->permissions as $permission): ?>
+        <tr>
+            <td class="list-checkbox nolink">
+                <div class="checkbox custom-checkbox nolabel">
+                    <input id="checkbox_1" type="checkbox" />
+                    <label for="checkbox_1">Check</label>
+                </div>
+            </td>
+            <td><?=$permission->name?></td>
+            <?php foreach($this->roles as $role): ?>
+            <td><button
+                    data-request="onAssignPerm"
+                    data-request-data="role_id: <?=$role->id?>, perm_id: <?=$permission->id?>"
+                    data-success="window.location.reload()"
+                >
+                <?php if($role->gotPermission($permission)): ?>
+                    <i class="icon-check" style="color: green;"></i>
+                <?php else: ?>
+                    <i class="icon-ban" style="color: #ff1c1c;"></i>
+                <?php endif; ?>
+            </button></td>
+            <?php endforeach; ?>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

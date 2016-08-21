@@ -1,0 +1,10 @@
+name: Permissions
+form: $/vdomah/roles/models/permission/fields.yaml
+modelClass: Vdomah\Roles\Models\Permission
+defaultRedirect: vdomah/roles/permissions
+create:
+    redirect: 'vdomah/roles/permissions/update/:id'
+    redirectClose: vdomah/roles/permissions
+update:
+    redirect: vdomah/roles/permissions
+    redirectClose: vdomah/roles/permissions
