@@ -7,10 +7,14 @@ fields:
     code:
         label: 'vdomah.roles::lang.fields.code'
         span: auto
-        oc.commentPosition: ''
+        comment: 'code'
+        preset:
+            field: name
+            type: slug
         type: text
     parent:
         label: 'vdomah.roles::lang.fields.parent'
         oc.commentPosition: ''
         span: auto
         type: relation
+        emptyOption: 'vdomah.roles::lang.fields.empty'

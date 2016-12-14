@@ -2,6 +2,7 @@
 
 use Auth;
 use RainLab\Builder\Classes\PermissionsModel;
+use Vdomah\Roles\Models\Role as RoleModel;
 use Vdomah\Roles\Models\Permission as PermissionModel;
 
 /**
@@ -18,25 +19,26 @@ class Helper
             $user = Auth::getUser();
         }
 
-        return $user && $perm ? $user->role->gotPermission($perm) : false;
+        return $user && $user->role && $perm ? $user->role->gotPermission($perm) : false;
     }
 
     public static function isRole($code, $user = null)
     {
         $out = false;
 
-        //$role_ids = [];
-        $first = self::where('code', $code)->first();
+        $first = RoleModel::where('code', $code)->first();
 
-        $role_ids = $first->ancestors->lists('id');
-        $role_ids[] = $first->id;
+        if ($first) {
+            $role_ids = array_pluck($first->ancestors, 'id');
+            $role_ids[] = $first->id;
 
-        if (Auth::check() && $user == null) {
-            $user = Auth::getUser();
-        }
+            if (Auth::check() && $user == null) {
+                $user = Auth::getUser();
+            }
 
-        if (in_array($user->role_id, $role_ids)) {
-            $out = true;
+            if (in_array($user->role_id, $role_ids)) {
+                $out = true;
+            }
         }
 
         return $out;

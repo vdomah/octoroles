@@ -8,6 +8,9 @@ fields:
         label: 'vdomah.roles::lang.fields.code'
         span: auto
         oc.commentPosition: ''
+        preset:
+            field: name
+            type: slug
         type: text
     role:
         label: 'vdomah.roles::lang.fields.role'

@@ -43,6 +43,9 @@ class Role extends Model
         'permissions' => [
             'Vdomah\Roles\Models\Permission',
         ],
+        'users' => [
+            'RainLab\User\Models\User',
+        ],
     ];
 
     public function getParentOptions()
