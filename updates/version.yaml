@@ -15,3 +15,5 @@
     - 'Replaced hardcoded backend urls with dynamic links in controller (thanks to Damian Verhaar)'
 1.1.0:
     - 'CMS Pages access managment by assigning roles and permissions'
+1.1.1:
+    - 'CMS Pages access managment moved to separate tab'

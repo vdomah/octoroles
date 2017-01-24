@@ -84,9 +84,6 @@ class Plugin extends PluginBase
             if (!$model instanceof UserModel)
                 return;
 
-//            if (!$model->exists)
-//                return;
-
             $form->addTabfields([
                 'role' => [
                     'label'     => 'vdomah.roles::lang.fields.role',
@@ -127,22 +124,22 @@ class Plugin extends PluginBase
                     'settings[role]' => [
                         'label'   => 'vdomah.roles::lang.fields.role',
                         'type'    => 'dropdown',
-                        'tab'     => 'cms::lang.editor.settings',
+                        'tab'     => 'vdomah.roles::lang.editor.access',
                         'options' => $this->getRoleOptions(),
-                        'span'    => 'right'
+                        'span'    => 'auto'
                     ],
                     'settings[permission]' => [
                         'label'   => 'vdomah.roles::lang.fields.permission',
                         'type'    => 'dropdown',
-                        'tab'     => 'cms::lang.editor.settings',
+                        'tab'     => 'vdomah.roles::lang.editor.access',
                         'options' => $this->getPermissionOptions(),
-                        'span'    => 'right'
+                        'span'    => 'auto'
                     ],
                     'settings[anonymous_only]' => [
                         'label'   => 'vdomah.roles::lang.fields.anonymous_only',
                         'type'    => 'checkbox',
-                        'tab'     => 'cms::lang.editor.settings',
-                        'span'    => 'left',
+                        'tab'     => 'vdomah.roles::lang.editor.access',
+                        'span'    => 'auto',
                         'comment' => 'vdomah.roles::lang.comments.anonymous_only',
                     ],
                 ],

@@ -26,4 +26,7 @@
         'label' => 'Access',
         'desc' => 'Manage user access to pages by roles',
     ],
+    'editor' => [
+        'access' => 'Access',
+    ],
 ];

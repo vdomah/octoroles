@@ -12,4 +12,7 @@
     'role' => [
         'label' => 'Role',
     ],
+    'editor' => [
+        'access' => 'Acceso',
+    ],
 ];
