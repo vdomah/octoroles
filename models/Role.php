@@ -86,7 +86,7 @@ class Role extends Model
 
         $current = $this->parent;
         while ($current != null) {
-            $ancestors[] = $this->parent;
+            $ancestors[] = $current;
             $current = $current->parent;
         }
 

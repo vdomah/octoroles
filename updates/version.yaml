@@ -17,3 +17,5 @@
     - 'CMS Pages access managment by assigning roles and permissions'
 1.1.1:
     - 'CMS Pages access managment moved to separate tab'
+1.1.2:
+    - 'Fixed bug wich prevented returning the whole ancestor tree in a role (thanks Daniel Tamas). En translations updated'
