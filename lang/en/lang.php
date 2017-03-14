@@ -11,6 +11,7 @@
         'code' => 'Code',
         'empty' => ' - None - ',
         'anonymous_only' => 'Anonymous only',
+        'logged_only' => 'Authorized users only',
     ],
     'role' => [
         'label' => 'Role',

@@ -72,7 +72,7 @@ class Access extends ComponentBase
             return Redirect::intended($redirectUrl);
         }
 
-        if ($this->page->is_hidden && !$isAuthenticated) {
+        if ($this->page->logged_only && !$isAuthenticated) {
             if (get('redirect')) {
                 $redirectUrl = get('redirect');
             }

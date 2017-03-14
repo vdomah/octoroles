@@ -142,6 +142,12 @@ class Plugin extends PluginBase
                         'span'    => 'auto',
                         'comment' => 'vdomah.roles::lang.comments.anonymous_only',
                     ],
+                    'settings[logged_only]' => [
+                        'label'   => 'vdomah.roles::lang.fields.logged_only',
+                        'type'    => 'checkbox',
+                        'tab'     => 'vdomah.roles::lang.editor.access',
+                        'span'    => 'auto',
+                    ],
                 ],
                 'primary'
             );
