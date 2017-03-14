@@ -19,3 +19,5 @@
     - 'CMS Pages access managment moved to separate tab'
 1.1.2:
     - 'Fixed bug wich prevented returning the whole ancestor tree in a role (thanks Daniel Tamas). En translations updated'
+1.1.3:
+    - 'Logged only CMS page parameter added'
