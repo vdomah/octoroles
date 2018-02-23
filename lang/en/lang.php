@@ -1,7 +1,8 @@
 <?php return [
     'plugin' => [
         'name' => 'Hierarchic Roles',
-        'description' => '',
+        'description' => 'Allows to manage access rights based on roles hierarchy',
+        'description_settings' => 'Choose front-end auth plugin to integrate',
     ],
     'fields' => [
         'name' => 'Name',
@@ -12,6 +13,8 @@
         'empty' => ' - None - ',
         'anonymous_only' => 'Anonymous only',
         'logged_only' => 'Authorized users only',
+        'user_plugin' => 'User Plugin',
+        'user_plugin_comment' => 'RainLab.User and Lovata.Buddies are available if present in the system',
     ],
     'role' => [
         'label' => 'Role',

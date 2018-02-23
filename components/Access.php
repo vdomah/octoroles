@@ -57,7 +57,7 @@ class Access extends ComponentBase
      */
     public function onRun()
     {
-        $isAuthenticated = Auth::check();
+        $isAuthenticated = Helper::getUserPlugin()->authUser() ? true : false;
         if ($isAuthenticated) {
             $redirectUrl = $this->controller->pageUrl($this->property('redirectAuth'));
         } else {
@@ -87,7 +87,7 @@ class Access extends ComponentBase
             $allowedByRole = true;
             if ($allowedRole) {
                 if ($isAuthenticated)
-                    $allowedByRole = Helper::isRole($allowedRole->code, Auth::getUser());
+                    $allowedByRole = Helper::isRole($allowedRole->code);
                 else
                     $allowedByRole = false;
             }
@@ -95,7 +95,7 @@ class Access extends ComponentBase
             $allowedByPermission = true;
             if ($allowedPerm) {
                 if ($isAuthenticated)
-                    $allowedByPermission = Helper::able($allowedPerm->code, Auth::getUser());
+                    $allowedByPermission = Helper::able($allowedPerm->code);
                 else
                     $allowedByPermission = false;
             }

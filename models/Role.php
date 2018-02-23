@@ -2,7 +2,6 @@
 
 use Model;
 use Auth;
-use RainLab\Builder\Classes\PermissionsModel;
 use Vdomah\Roles\Models\Permission as PermissionModel;
 use Vdomah\Roles\Classes\Helper;
 

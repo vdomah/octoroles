@@ -3,18 +3,13 @@
 use Event;
 use Backend;
 use System\Classes\PluginBase;
-use RainLab\User\Models\User as UserModel;
-use RainLab\User\Controllers\Users as UsersController;
 use Vdomah\Roles\Classes\Helper;
 use Vdomah\Roles\Models\Role as RoleModel;
 use Vdomah\Roles\Models\Permission as PermissionModel;
+use Vdomah\Roles\Models\Settings;
 
 class Plugin extends PluginBase
 {
-    /**
-     * @var array   Require the RainLab.User plugin
-     */
-    public $require = ['RainLab.User'];
 
     public function registerComponents()
     {
@@ -25,6 +20,18 @@ class Plugin extends PluginBase
 
     public function registerSettings()
     {
+        return [
+            'config' => [
+                'label'       => 'vdomah.roles::lang.plugin.name',
+                'icon'        => 'oc-icon-cubes',
+                'description' => 'vdomah.roles::lang.plugin.description_settings',
+                'class'       => 'Vdomah\Roles\Models\Settings',
+                'order'       => 100,
+                'permissions' => [
+                    'roles-menu-settings',
+                ],
+            ],
+        ];
     }
 
     public function registerMarkupTags()
@@ -39,16 +46,26 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-        Event::listen('backend.menu.extendItems', function($manager) {
-            $manager->addSideMenuItems('RainLab.User', 'user', [
-                'users' => [
+        if (!$userPlugin = Helper::getUserPlugin()) {
+            return;
+        }
+        $userClass = $userPlugin->getUserClass();
+        $userController = $userPlugin->getUserControllerClass();
+
+        Event::listen('backend.menu.extendItems', function($manager) use ($userPlugin) {
+            $menu = [];
+            if ($userPlugin == Helper::USER_PLUGIN_RAINLAB) {
+                $menu['users'] = [
                     'label'       => 'vdomah.roles::lang.menu.users',
                     'icon'        => 'icon-user',
                     'code'        => 'users',
-                    'owner'       => 'RainLab.User',
+                    'owner'       => $userPlugin->getPluginName(),
                     'url'         => Backend::url('rainlab/user/users'),
-                    'order'       => 400
-                ],
+                    'order'       => 400,
+                ];
+            }
+
+            $menu = array_merge($menu, [
                 'roles_h' => [
                     'label'       => 'vdomah.roles::lang.menu.roles_h',
                     'icon'        => 'icon-registered',
@@ -66,9 +83,10 @@ class Plugin extends PluginBase
                     'order'       => 400
                 ],
             ]);
+            $manager->addSideMenuItems($userPlugin->getPluginName(), $userPlugin->getBackendMenuName(), $menu);
         });
 
-        UserModel::extend(function($model)
+        $userClass::extend(function($model)
         {
             $model->belongsTo['role']      = ['Vdomah\Roles\Models\Role'];
 
@@ -79,9 +97,9 @@ class Plugin extends PluginBase
             });
         });
 
-        UsersController::extendFormFields(function($form, $model, $context){
+        $userController::extendFormFields(function($form, $model, $context) use ($userClass) {
 
-            if (!$model instanceof UserModel)
+            if (!$model instanceof $userClass)
                 return;
 
             $form->addTabfields([

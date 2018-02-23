@@ -4,6 +4,7 @@ use Backend\Classes\Controller;
 use BackendMenu;
 use Flash;
 use Vdomah\Roles\Models\Permission as PermissionModel;
+use Vdomah\Roles\Classes\Helper;
 
 class Permissions extends Controller
 {
@@ -16,7 +17,7 @@ class Permissions extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('RainLab.User', 'user', 'permissions_h');
+        BackendMenu::setContext(Helper::getUserPlugin()->getPluginName(), Helper::getUserPlugin()->getBackendMenuName(), 'permissions_h');
     }
 
     public function index_onDelete()

@@ -1,0 +1,7 @@
+fields:
+    user_plugin:
+        span: left
+        label: vdomah.roles::lang.fields.user_plugin
+        type: dropdown
+        default: RainLab.User
+        comment: vdomah.roles::lang.fields.user_plugin_comment

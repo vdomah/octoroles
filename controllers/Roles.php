@@ -7,6 +7,7 @@ use Flash;
 use Vdomah\Roles\Models\Role as RoleModel;
 use Vdomah\Roles\Models\Permission as PermissionModel;
 use Backend;
+use Vdomah\Roles\Classes\Helper;
 
 class Roles extends Controller
 {
@@ -25,7 +26,7 @@ class Roles extends Controller
         $this->roles = RoleModel::get();
         $this->permissions = PermissionModel::get();
 
-        BackendMenu::setContext('RainLab.User', 'user', 'roles_h');
+        BackendMenu::setContext(Helper::getUserPlugin()->getPluginName(), Helper::getUserPlugin()->getBackendMenuName(), 'roles_h');
     }
 
     public function onAssignPerm()
