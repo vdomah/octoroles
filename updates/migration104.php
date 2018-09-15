@@ -7,6 +7,7 @@ class Migration104 extends Migration
 {
     public function up()
     {
+        if (Schema::hasTable('users'))
         Schema::table('users', function($table)
         {
             $table->integer('role_id');
@@ -15,6 +16,7 @@ class Migration104 extends Migration
 
     public function down()
     {
+        if (Schema::hasTable('users'))
         Schema::table('users', function($table)
         {
             $table->dropColumn('role_id');
