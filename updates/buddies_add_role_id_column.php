@@ -14,7 +14,7 @@ class BuddiesAddRoleIdColumn extends Migration
 
         Schema::table('lovata_buddies_users', function($table)
         {
-            $table->integer('role_id');
+            $table->integer('role_id')->nullable();
         });
     }
 

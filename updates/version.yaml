@@ -28,3 +28,5 @@
     - buddies_add_role_id_column.php
 1.2.2:
     - 'Add fillable to Role model'
+1.2.3:
+    - 'role_id field nullable'
