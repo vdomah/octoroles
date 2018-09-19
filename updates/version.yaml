@@ -23,6 +23,8 @@
     - '"Logged only" CMS page parameter added'
 1.2.0:
     - 'Lovata.Buddies plugin integration'
-    - buddies_add_role_id_column.php
 1.2.1:
+    - 'Check if users table exists in migrations before altering it'
+    - buddies_add_role_id_column.php
+1.2.2:
     - 'Add fillable to Role model'
