@@ -86,8 +86,11 @@ class Plugin extends PluginBase
             $manager->addSideMenuItems($userPlugin->getPluginName(), $userPlugin->getBackendMenuName(), $menu);
         });
 
-        $userClass::extend(function($model)
-        {
+        RoleModel::extend(function($model) use ($userClass) {
+            $model->hasMany['users'] = $userClass;
+        });
+
+        $userClass::extend(function($model) {
             $model->belongsTo['role']      = ['Vdomah\Roles\Models\Role'];
 
             $model->addDynamicMethod('scopeFilterByRole', function($query, $filter) use ($model) {
@@ -105,19 +108,20 @@ class Plugin extends PluginBase
             $form->addTabfields([
                 'role' => [
                     'label'     => 'vdomah.roles::lang.fields.role',
-                    'tab'       => 'rainlab.user::lang.user.account',
+                    'tab'       => 'vdomah.roles::lang.fields.role',
                     'type'      => 'relation',
+                    'span'      => 'auto',
                 ],
             ]);
         });
 
-        Event::listen('backend.list.extendColumns', function($widget) {
+        Event::listen('backend.list.extendColumns', function($widget) use ($userController, $userClass) {
 
-            if (!$widget->getController() instanceof \RainLab\User\Controllers\Users) {
+            if (!$widget->getController() instanceof $userController) {
                 return;
             }
 
-            if (!$widget->model instanceof \RainLab\User\Models\User) {
+            if (!$widget->model instanceof $userClass) {
                 return;
             }
 

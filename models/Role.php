@@ -23,6 +23,11 @@ class Role extends Model
     public $rules = [
     ];
 
+    public $fillable = [
+        'name',
+        'code',
+    ];
+
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.
@@ -41,9 +46,6 @@ class Role extends Model
         ],
         'permissions' => [
             'Vdomah\Roles\Models\Permission',
-        ],
-        'users' => [
-            'RainLab\User\Models\User',
         ],
     ];
 
