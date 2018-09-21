@@ -46,9 +46,11 @@ class Plugin extends PluginBase
 
     public function boot()
     {
+        //\BackendAuth::login(\Backend\Models\User::find(1));
         if (!$userPlugin = Helper::getUserPlugin()) {
             return;
         }
+		$userPlugin->checkRoleIdColumnExists();
         $userClass = $userPlugin->getUserClass();
         $userController = $userPlugin->getUserControllerClass();
 

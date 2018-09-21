@@ -1,6 +1,5 @@
 <?php namespace Vdomah\Roles\Classes;
 
-
 class LovataBuddies extends AbstractPluginInfo
 {
 

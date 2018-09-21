@@ -1,5 +1,6 @@
 <?php namespace Vdomah\Roles\Classes;
 
+use Schema;
 
 abstract class AbstractPluginInfo
 {
@@ -26,4 +27,21 @@ abstract class AbstractPluginInfo
     abstract function getBackendMenuName();
 
     abstract function authUser();
+
+    public function checkRoleIdColumnExists()
+    {
+        $user_class = $this->getUserClass();
+		$model = new $user_class;
+        $table = $model->getTable();
+
+		if (!Schema::hasTable($table) ||
+            (Schema::hasTable($table) && Schema::hasColumn($table, 'role_id'))
+        )
+            return;
+
+        Schema::table($table, function($table)
+        {
+            $table->integer('role_id')->nullable();
+        });
+    }
 }

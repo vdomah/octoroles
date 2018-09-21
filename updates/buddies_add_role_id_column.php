@@ -8,7 +8,7 @@ class BuddiesAddRoleIdColumn extends Migration
     public function up()
     {
         if (!Schema::hasTable('lovata_buddies_users') ||
-            (Schema::hasTable('lovata_buddies_users') && Schema::hasColumn('lovata_buddies_users', 'role_id'))
+            Schema::hasColumn('lovata_buddies_users', 'role_id')
         )
             return;
 
@@ -21,7 +21,7 @@ class BuddiesAddRoleIdColumn extends Migration
     public function down()
     {
         if (!Schema::hasTable('lovata_buddies_users') ||
-            (Schema::hasTable('lovata_buddies_users') && !Schema::hasColumn('lovata_buddies_users', 'role_id'))
+            !Schema::hasColumn('lovata_buddies_users', 'role_id')
         )
             return;
 
