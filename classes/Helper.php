@@ -72,10 +72,10 @@ class Helper
         $userPlugin = Settings::get('user_plugin');
 
         if (!in_array($userPlugin, [self::USER_PLUGIN_RAINLAB, self::USER_PLUGIN_LOVATA])) {
-            if (PluginManager::instance()->exists('RainLab.User'))
+            if (PluginManager::instance()->exists(self::USER_PLUGIN_RAINLAB))
                 $userPlugin = self::USER_PLUGIN_RAINLAB;
 
-            if (PluginManager::instance()->exists('Lovata.Buddies'))
+            if (PluginManager::instance()->exists(self::USER_PLUGIN_LOVATA))
                 $userPlugin = self::USER_PLUGIN_LOVATA;
         }
 

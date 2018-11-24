@@ -100,6 +100,14 @@ class Plugin extends PluginBase
                     $group->whereIn('id', $filter);
                 });
             });
+
+            $model->addDynamicMethod('isRole', function($code) use ($model) {
+                return Helper::isRole($code, $model);
+            });
+
+            $model->addDynamicMethod('able', function($code) use ($model) {
+                return Helper::able($code, $model);
+            });
         });
 
         $userController::extendFormFields(function($form, $model, $context) use ($userClass) {
