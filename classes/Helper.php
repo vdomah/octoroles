@@ -51,6 +51,11 @@ class Helper
         return $out;
     }
 
+    public static function roleByCode($role_code)
+    {
+        RoleModel::where('code', $role_code)->first();
+    }
+
     public static function iterateChildren($children, $perm)
     {
         $out = false;

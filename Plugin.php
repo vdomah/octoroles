@@ -1,9 +1,11 @@
 <?php namespace Vdomah\Roles;
 
+use Cms\Classes\Page;
 use Event;
 use Backend;
 use System\Classes\PluginBase;
 use Vdomah\Roles\Classes\Helper;
+use Vdomah\Roles\Components\Access;
 use Vdomah\Roles\Models\Role as RoleModel;
 use Vdomah\Roles\Models\Permission as PermissionModel;
 use Vdomah\Roles\Models\Settings;
@@ -14,7 +16,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Vdomah\Roles\Components\Access'       => 'rolesAccess',
+            Access::class       => 'rolesAccess',
         ];
     }
 
@@ -39,14 +41,14 @@ class Plugin extends PluginBase
         return [
             'functions'   => [
                 'able'         => function($permission, $user = null) { return Helper::able($permission, $user); },
-                'isRole'     => function($role, $user = null) { return Helper::isRole($role, $user); }
+                'isRole'     => function($role_code, $user = null) { return Helper::isRole($role_code, $user); },
+                'roleByCode'     => function($role_code, $user = null) { return Helper::roleByCode($role_code); },
             ]
         ];
     }
 
     public function boot()
     {
-        //\BackendAuth::login(\Backend\Models\User::find(1));
         if (!$userPlugin = Helper::getUserPlugin()) {
             return;
         }
@@ -149,7 +151,7 @@ class Plugin extends PluginBase
     {
         Event::listen('backend.form.extendFields', function($widget)
         {
-            if (!$widget->model instanceof \Cms\Classes\Page) return;
+            if (!$widget->model instanceof Page) return;
 
             $widget->addFields(
                 [

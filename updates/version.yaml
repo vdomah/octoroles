@@ -34,3 +34,5 @@
     - 'Check role_id exists in users table and add if no'
 1.2.5:
     - 'Added isRole and able methods to user object'
+1.2.6:
+    - 'Added roleByCode twig helper and corresponding Helper::roleByCode php helper'
