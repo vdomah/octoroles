@@ -7,6 +7,9 @@ class BuilderTableCreateVdomahRolesPermissions extends Migration
 {
     public function up()
     {
+        if (Schema::hasTable('vdomah_roles_permissions'))
+            return;
+
         Schema::create('vdomah_roles_permissions', function($table)
         {
             $table->engine = 'InnoDB';

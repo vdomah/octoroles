@@ -81,8 +81,20 @@ class Access extends ComponentBase
         }
 
         if ($redirectUrl) {
-            $allowedRole = RoleModel::find($this->page->role);
-            $allowedPerm = PermissionModel::find($this->page->permission);
+            // from v1.2.7 page role and permission are stored as codes in string format.
+            // Backwards compatibility: if role and permission are stored as id (int) it'll also work
+
+            if (is_string($this->page->role)) {
+                $allowedRole = RoleModel::whereCode($this->page->role)->first();
+            } else {
+                $allowedRole = RoleModel::find($this->page->role);
+            }
+
+            if (is_string($this->page->permission)) {
+                $allowedPerm = PermissionModel::whereCode($this->page->permission)->first();
+            } else {
+                $allowedPerm = PermissionModel::find($this->page->permission);
+            }
 
             $allowedByRole = true;
             if ($allowedRole) {

@@ -190,11 +190,11 @@ class Plugin extends PluginBase
 
     public function getRoleOptions()
     {
-        return array_merge([0 => 'vdomah.roles::lang.fields.empty'], RoleModel::lists('name', 'id'));
+        return array_merge([0 => 'vdomah.roles::lang.fields.empty'], RoleModel::lists('name', 'code'));
     }
 
     public function getPermissionOptions()
     {
-        return array_merge([0 => 'vdomah.roles::lang.fields.empty'], PermissionModel::lists('name', 'id'));
+        return array_merge([0 => 'vdomah.roles::lang.fields.empty'], PermissionModel::lists('name', 'code'));
     }
 }
