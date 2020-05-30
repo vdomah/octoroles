@@ -97,6 +97,7 @@ class Plugin extends PluginBase
 
         $userClass::extend(function($model) use ($userRoleIdColumnName) {
             $model->belongsTo['role']      = ['Vdomah\Roles\Models\Role', 'key' => $userRoleIdColumnName,];
+            $model->addFillable($userRoleIdColumnName);
 
             $model->addDynamicMethod('scopeFilterByRole', function($query, $filter) use ($model) {
                 return $query->whereHas('role', function($group) use ($filter) {
