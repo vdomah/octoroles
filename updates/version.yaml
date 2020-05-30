@@ -38,3 +38,4 @@
     - 'Added roleByCode twig helper and corresponding Helper::roleByCode php helper'
 1.2.7:
     - 'Page role and permission are stored as codes. Backwards compatibility for id (int) so no changes are mandatory for existing projects'
+1.2.8: Fixed roleByCode helper.
