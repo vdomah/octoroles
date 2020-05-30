@@ -11,6 +11,5 @@ columns:
         sortable: true
     role:
         label: 'vdomah.roles::lang.fields.role'
-        type: relation
         relation: role
         select: name
