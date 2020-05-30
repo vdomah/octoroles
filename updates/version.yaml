@@ -39,3 +39,6 @@
 1.2.7:
     - 'Page role and permission are stored as codes. Backwards compatibility for id (int) so no changes are mandatory for existing projects'
 1.2.8: Fixed roleByCode helper.
+1.3.0: !!! Rename role_id to vdomah_roles_role_id (needed by guidelines).
+    - builder_table_update_buddies_rename_role_id_column.php
+    - builder_table_update_users_rename_role_id_column.php

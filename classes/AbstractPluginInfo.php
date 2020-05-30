@@ -28,6 +28,11 @@ abstract class AbstractPluginInfo
 
     abstract function authUser();
 
+    public function getUserRoleIdColumnName()
+    {
+        return 'vdomah_roles_role_id';
+    }
+
     public function checkRoleIdColumnExists()
     {
         $user_class = $this->getUserClass();
@@ -35,13 +40,13 @@ abstract class AbstractPluginInfo
         $table = $model->getTable();
 
 		if (!Schema::hasTable($table) ||
-            (Schema::hasTable($table) && Schema::hasColumn($table, 'role_id'))
+            (Schema::hasTable($table) && Schema::hasColumn($table, $this->getUserRoleIdColumnName()))
         )
             return;
 
         Schema::table($table, function($table)
         {
-            $table->integer('role_id')->nullable();
+            $table->integer($this->getUserRoleIdColumnName())->nullable();
         });
     }
 }

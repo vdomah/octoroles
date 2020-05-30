@@ -1,8 +1,8 @@
 <?php namespace Vdomah\Roles\Classes;
 
-
 class RainLabUser extends AbstractPluginInfo
 {
+    const ADAPTER_PLUGIN = 'Vdomah.RolesUser';
 
     public function getPluginName()
     {

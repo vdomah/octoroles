@@ -2,6 +2,7 @@
 
 class LovataBuddies extends AbstractPluginInfo
 {
+    const ADAPTER_PLUGIN = 'Vdomah.RolesBuddies';
 
     public function getPluginName()
     {

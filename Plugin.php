@@ -55,6 +55,7 @@ class Plugin extends PluginBase
 		$userPlugin->checkRoleIdColumnExists();
         $userClass = $userPlugin->getUserClass();
         $userController = $userPlugin->getUserControllerClass();
+        $userRoleIdColumnName = $userPlugin->getUserRoleIdColumnName();
 
         Event::listen('backend.menu.extendItems', function($manager) use ($userPlugin) {
             $menu = [];
@@ -94,8 +95,8 @@ class Plugin extends PluginBase
             $model->hasMany['users'] = $userClass;
         });
 
-        $userClass::extend(function($model) {
-            $model->belongsTo['role']      = ['Vdomah\Roles\Models\Role'];
+        $userClass::extend(function($model) use ($userRoleIdColumnName) {
+            $model->belongsTo['role']      = ['Vdomah\Roles\Models\Role', 'key' => $userRoleIdColumnName,];
 
             $model->addDynamicMethod('scopeFilterByRole', function($query, $filter) use ($model) {
                 return $query->whereHas('role', function($group) use ($filter) {
