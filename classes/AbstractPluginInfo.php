@@ -30,7 +30,7 @@ abstract class AbstractPluginInfo
 
     public function getUserRoleIdColumnName()
     {
-        return 'vdomah_roles_role_id';
+        return 'vdomah_role_id';
     }
 
     public function checkRoleIdColumnExists()
