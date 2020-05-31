@@ -3,7 +3,7 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateUsersRenameRoleId extends Migration
+class BuilderTableUpdateUsersRenameRoleId2 extends Migration
 {
     public $table = 'users';
 

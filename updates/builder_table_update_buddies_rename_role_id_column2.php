@@ -3,7 +3,7 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateLovataBuddiesUsersRenameRoleId extends Migration
+class BuilderTableUpdateLovataBuddiesUsersRenameRoleId2 extends Migration
 {
     public $table = 'lovata_buddies_users';
 

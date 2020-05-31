@@ -54,3 +54,5 @@
     - Rename vdomah_roles_role_id column to vdomah_role_id
     - builder_table_update_buddies_rename_role_id_column2.php
     - builder_table_update_users_rename_role_id_column2.php
+1.3.5:
+    - Fix class names in migrations from v1.3.4
