@@ -42,12 +42,12 @@ class Helper
             if ($user == null) {
                 $user = self::getUserPlugin()->authUser();
             }
-//dd($user->role->code, $first->code, in_array($user->vdomah_role_id, $role_ids));
-            if (in_array($user->vdomah_role_id, $role_ids)) {
+
+            if ($user && in_array($user->vdomah_role_id, $role_ids)) {
                 $out = true;
             }
         }
-        //dd($out, $role_ids, $first);
+
         return $out;
     }
 
