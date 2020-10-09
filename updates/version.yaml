@@ -60,3 +60,6 @@
     - isRole fix error when user not logged in
 1.3.7:
     - Helper::iterateChildren fix. Documented Helper class.
+1.3.8:
+    - "Make sure vdomah_role_id column in users/lovata_buddies_users is nullable."
+    - builder_table_update_role_id_nullable.php
