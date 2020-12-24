@@ -9,3 +9,4 @@ toolbar:
     search:
         prompt: 'backend::lang.list.search_prompt'
 recordUrl: 'vdomah/roles/roles/update/:id'
+showTree: true

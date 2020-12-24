@@ -63,3 +63,5 @@
 1.3.8:
     - "Make sure vdomah_role_id column in users/lovata_buddies_users is nullable."
     - builder_table_update_role_id_nullable.php
+1.3.9:
+    - "Roles list as tree."
