@@ -121,10 +121,11 @@ class Plugin extends PluginBase
 
             $form->addTabfields([
                 'role' => [
-                    'label'     => 'vdomah.roles::lang.fields.role',
-                    'tab'       => 'vdomah.roles::lang.fields.role',
-                    'type'      => 'relation',
-                    'span'      => 'auto',
+                    'label'         => 'vdomah.roles::lang.fields.role',
+                    'tab'           => 'vdomah.roles::lang.fields.role',
+                    'type'          => 'relation',
+                    'span'          => 'auto',
+                    'emptyOption'   => 'vdomah.roles::lang.fields.empty',
                 ],
             ]);
         });
