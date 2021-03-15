@@ -119,6 +119,9 @@ class Plugin extends PluginBase
             if (!$model instanceof $userClass)
                 return;
 
+            if ($form->isNested)
+                return;
+
             $form->addTabfields([
                 'role' => [
                     'label'         => 'vdomah.roles::lang.fields.role',

@@ -67,3 +67,4 @@
     - "Roles list as tree."
 1.3.10:
     - "emptyOption added in user form role dropdown."
+1.3.11: Role field extended - prevent from appearing in repeater of the same model form.
