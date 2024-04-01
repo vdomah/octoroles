@@ -49,6 +49,11 @@ class Plugin extends PluginBase
 
     public function boot()
     {
+    	if(!app()->hasDatabase()) {
+
+            return;
+        }
+
         if (!$userPlugin = Helper::getUserPlugin()) {
             return;
         }
