@@ -45,7 +45,14 @@ class Role extends Model
             'key' => 'parent_id',
         ],
         'permissions' => [
-            'Vdomah\Roles\Models\Permission',
+            Permission::class,
+        ],
+    ];
+
+    public $belongsToMany = [
+        'permissions_many' => [
+            Permission::class,
+            'table' => 'vdomah_roles_permission_role',
         ],
     ];
 
@@ -72,10 +79,10 @@ class Role extends Model
 
         if ($this->id == $perm->role_id) {
             $out = true;
+        } elseif ($this->children->count()) {
+            $out = Helper::iterateChildren($this->children, $perm);
         } else {
-            if ($this->children != null) {
-                $out = Helper::iterateChildren($this->children, $perm);
-            }
+            $out = $this->permissions_many()->whereCode($perm->code)->exists();
         }
 
         return $out;

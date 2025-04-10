@@ -35,4 +35,15 @@ class Permission extends Model
             'Vdomah\Roles\Models\Role',
         ],
     ];
+
+    public $belongsToMany = [
+        'roles_many' => [
+            Role::class,
+            'table' => 'vdomah_roles_permission_role',
+        ],
+        'conditions' => [
+            Condition::class,
+            'table' => 'vdomah_roles_condition_permission',
+        ],
+    ];
 }

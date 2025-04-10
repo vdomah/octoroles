@@ -18,3 +18,20 @@ fields:
         span: auto
         type: relation
         emptyOption: 'vdomah.roles::lang.fields.empty'
+    permissions_many:
+        label: Permissions
+        type: relation
+        context: update
+        controller:
+            label: Permissions
+            manage:
+#                scope: byCategorySupplier
+                showSearch: true
+                recordsPerPage: 10
+            view:
+                toolbarButtons: add|remove
+                list: $/vdomah/roles/models/permission/columns.yaml
+                recordsPerPage: 10
+            form: $/vdomah/roles/models/permission/fields.yaml
+            popupSize: adaptive
+#        tab: Products

@@ -1,0 +1,10 @@
+name: Conditions
+form: $/vdomah/roles/models/condition/fields.yaml
+modelClass: Vdomah\Roles\Models\Condition
+defaultRedirect: vdomah/roles/conditions
+create:
+    redirect: 'vdomah/roles/conditions/update/:id'
+    redirectClose: vdomah/roles/conditions
+update:
+    redirect: vdomah/roles/conditions
+    redirectClose: vdomah/roles/conditions

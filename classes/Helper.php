@@ -35,7 +35,15 @@ class Helper
             $user = self::getUserPlugin()->authUser();
         }
 
-        return $user && $user->role && $perm ? $user->role->gotPermission($perm) : false;
+        $conditionsValidated = false;
+        foreach ($perm->conditions as $cond) {
+            if ($user->{$cond->code}) {
+                $conditionsValidated = true;
+                break;
+            }
+        }
+
+        return $user && $user->role && ($perm ? $user->role->gotPermission($perm) : false) && $conditionsValidated;
     }
 
     /*

@@ -15,3 +15,38 @@ fields:
     role:
         label: 'vdomah.roles::lang.fields.role'
         type: relation
+        emptyOption: -
+    roles_many:
+        label: Roles
+        span: auto
+        type: relation
+        context: update
+        controller:
+            label: Roles
+            manage:
+                #                scope: byCategorySupplier
+                showSearch: true
+                recordsPerPage: 10
+            view:
+                toolbarButtons: add|remove
+                list: $/vdomah/roles/models/role/columns.yaml
+                recordsPerPage: 10
+            form: $/vdomah/roles/models/role/fields.yaml
+            popupSize: adaptive
+    conditions:
+        label: Conditions
+        span: auto
+        type: relation
+        context: update
+        controller:
+            label: Conditions
+            manage:
+                #                scope: byCategorySupplier
+                showSearch: true
+                recordsPerPage: 10
+            view:
+                toolbarButtons: create|add|remove|delete
+                list: $/vdomah/roles/models/condition/columns.yaml
+                recordsPerPage: 10
+            form: $/vdomah/roles/models/condition/fields.yaml
+            popupSize: adaptive
