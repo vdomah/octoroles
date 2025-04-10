@@ -75,8 +75,8 @@ v1.3.13:
     - 'Updated table vdomah_roles_permissions'
     - builder_table_update_vdomah_roles_permissions.php
 v1.3.14:
-    - 'Created table vdomah_roles_attributes'
+    - 'Created table vdomah_roles_conditions'
     - builder_table_create_vdomah_roles_conditions.php
 v1.3.15:
-    - 'Created table vdomah_roles_attribute_permission'
+    - 'Created table vdomah_roles_condition_permission'
     - builder_table_create_vdomah_roles_condition_permission.php
